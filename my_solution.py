@@ -1,4 +1,4 @@
-class Board(object):
+class Board:
     square1 = ["|_","_"," |"]
     square2 = ["_","_"," |"]
     square3 = ["_","_","_|"]
@@ -21,24 +21,8 @@ class Board(object):
 
     counter = 1
 
-def print_starting_board():
-    display_board()
 
 def update_board(location, player):
-
-    print Board.counter
-    print Board.square1[1]
-    print Board.square2[1]
-    print Board.square3[1]
-    print Board.square4[1]
-    print Board.square5[1]
-    print Board.square6[1]
-    print Board.square7[1]
-    print Board.square8[1]
-    print Board.square9[1]
-    
-    
-    
     if location == 1:
         if Board.square1[1] == "_":
             if player == 1:
@@ -131,7 +115,8 @@ def update_board(location, player):
     Board.str7 = "".join(Board.square7)
     Board.str8 = "".join(Board.square8)
     Board.str9 = "".join(Board.square9)
-    print Board.str1[2], Board.str1[1], Board.str1[2]
+
+
     display_board()
 
     check_for_winner(location)
@@ -141,10 +126,13 @@ def check_for_winner(location):
         if (Board.str1[2]==Board.str2[1] and Board.str1[2]==Board.str3[1]) or (Board.str1[2]==Board.str4[2] and Board.str1[2]==Board.str7[2]) or (Board.str1[2]==Board.str5[1] and Board.str1[2]==Board.str9[1]):
             if Board.str1[2] == "X":
                 print "Player 1 Wins!"
+                
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
            print "It's a tie! Everyone wins, yayyy! :)"
+           play_again()
         else:
             player_turn()
     if location == 2:
@@ -153,18 +141,25 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 3:
         if (Board.str3[1]==Board.str2[1] and Board.str3[1]==Board.str1[2]) or (Board.str3[1]==Board.str6[1] and Board.str3[1]==Board.str9[1]) or (Board.str3[1]==Board.str5[1] and Board.str3[1]==Board.str7[2]):
             if Board.str3[1] == "X":
                 print "Player 1 Wins!"
+                play_again()
             else:
                 print "Player 2 Wins!"
+            play_again()
+            
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
+            start_again()
         else:
             player_turn()
     if location == 4:
@@ -173,8 +168,10 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 5:
@@ -183,8 +180,10 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 6:
@@ -193,8 +192,10 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10: 
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 7:
@@ -203,8 +204,10 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 8:
@@ -213,8 +216,10 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()
     if location == 9:
@@ -223,16 +228,12 @@ def check_for_winner(location):
                 print "Player 1 Wins!"
             else:
                 print "Player 2 Wins!"
+            play_again()
         elif Board.counter==10:
             print "It's a tie! Everyone wins, yayyy! :)"
+            play_again()
         else:
             player_turn()        
-    
-def start_game():
-    print(player())
-    create_board()
-    player_turn()
-
 
 def player_turn():
     player = 1
@@ -256,9 +257,39 @@ def display_board():
     print Board.str4 + Board.str5 + Board.str6    
     print Board.str7 + Board.str8 + Board.str9
 
+def play_again():
+    if raw_input("Do you want to play again? (Y/N)").lower() == "y":
+        clear_board()
+        display_board()
+        player_turn()
 
+
+def clear_board():
+
+    Board.counter = 1
+    Board.square1 = ["|_","_"," |"]
+    Board.square2 = ["_","_"," |"]
+    Board.square3 = ["_","_","_|"]
+    Board.square4 = ["|_","_"," |"]
+    Board.square5 = ["_","_"," |"]
+    Board.square6 = ["_","_","_|"]
+    Board.square7 = ["|_","_"," |"]
+    Board.square8 = ["_","_"," |"]
+    Board.square9 = ["_","_","_|"]
+
+    Board.str1 = "".join(Board.square1)
+    Board.str2 = "".join(Board.square2)
+    Board.str3 = "".join(Board.square3)
+    Board.str4 = "".join(Board.square4)
+    Board.str5 = "".join(Board.square5)
+    Board.str6 = "".join(Board.square6)
+    Board.str7 = "".join(Board.square7)
+    Board.str8 = "".join(Board.square8)
+    Board.str9 = "".join(Board.square9)
+
+    
 ##Begin game here, original state
-print_starting_board()
+display_board()
 
 ##Defines player whose turn it is and calls new_move(player)
 ##and update_board(new_move(player), player)
